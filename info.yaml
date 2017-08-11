@@ -1,0 +1,156 @@
+scale: 1
+offset:
+  - 0
+  - 0
+nodes:
+  - name: fortigate_server
+    type: Server
+    uiType: Compute
+    width: 210
+    height: 230
+    x: 40
+    'y': 40
+    color: !<tag:yaml.org,2002:js/undefined> ''
+  - name: port
+    type: Port
+    uiType: Port
+    width: 30
+    height: 30
+    x: 125
+    'y': 440
+    color: '#41d1d5'
+  - name: public_subnet
+    type: Subnet
+    uiType: Subnet
+    width: 130
+    height: 80
+    x: 75
+    'y': 400
+    color: '#41d1d5'
+  - name: public_network
+    type: Network
+    uiType: Network
+    width: 160
+    height: 130
+    x: 60
+    'y': 360
+    color: !<tag:yaml.org,2002:js/undefined> ''
+  - name: security_group
+    type: SecurityGroup
+    uiType: SecurityGroup
+    width: 55
+    height: 70
+    x: 140
+    'y': 520
+    color: '#9f84dc'
+  - name: ip
+    type: FloatingIP
+    uiType: VirtualIp
+    width: 55
+    height: 70
+    x: 280
+    'y': 500
+    color: '#f5804a'
+  - name: application_network
+    type: Network
+    uiType: Network
+    width: 160
+    height: 110
+    x: 320
+    'y': 260
+    color: !<tag:yaml.org,2002:js/undefined> ''
+  - name: application_subnet
+    type: Subnet
+    uiType: Subnet
+    width: 130
+    height: 40
+    x: 335
+    'y': 300
+    color: '#917787'
+connectors:
+  - name: New_Connector_2
+    type: cloudify.relationships.depends_on
+    uiType: containedInConnector
+    source: port
+    target: !<tag:yaml.org,2002:js/undefined> ''
+  - name: New_Connector_5
+    type: cloudify.relationships.contained_in
+    uiType: containedInConnector
+    source: public_subnet
+    target: !<tag:yaml.org,2002:js/undefined> ''
+  - name: New_Connector_6
+    type: cloudify.relationships.contained_in
+    uiType: containedInConnector
+    source: application_subnet
+    target: application_network
+  - name: New_Connector_1
+    type: cloudify.openstack.server_connected_to_port
+    uiType: vNicConnector
+    source: fortigate_server
+    target: port
+    x1: 50
+    y1: 240
+    x2: 130
+    y2: 450
+    points:
+      - - 45
+        - 240
+      - - 30
+        - 450
+      - - 127
+        - 450
+    color: '#41d1d5'
+  - name: New_Connector_3
+    type: cloudify.openstack.port_connected_to_security_group
+    uiType: Connector
+    source: port
+    target: security_group
+    x1: 157
+    y1: 450
+    x2: 145
+    y2: 542.5
+    points:
+      - - 157
+        - 450
+      - - 172
+        - 486.25
+      - - 127
+        - 542.5
+      - - 142
+        - 542.5
+    color: '#9f84dc'
+  - name: New_Connector_4
+    type: cloudify.openstack.port_connected_to_floating_ip
+    uiType: Connector
+    source: port
+    target: ip
+    x1: 157
+    y1: 450
+    x2: 285
+    y2: 522.5
+    points:
+      - - 157
+        - 450
+      - - 219.5
+        - 522.5
+      - - 282
+        - 522.5
+    color: '#f5804a'
+  - name: New_Connector_5
+    type: cloudify.relationships.connected_to
+    uiType: Connector
+    source: fortigate_server
+    target: application_network
+    x1: 252
+    y1: 135
+    x2: 325
+    y2: 310
+    points:
+      - - 252
+        - 135
+      - - 287
+        - 310
+      - - 322
+        - 310
+    color: !<tag:yaml.org,2002:js/undefined> ''
+groups: []
