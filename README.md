@@ -9,7 +9,7 @@ You will need a *Cloudify Manager* running in Openstack.
 
 If you have not already, set up the [example Cloudify environment](https://github.com/cloudify-examples/cloudify-environment-setup). Installing that blueprint and following all of the configuration instructions will ensure you have all of the prerequisites, including keys, plugins, and secrets.
 
-You will also need a [Fortigate image with a valid licence] (https://support.fortinet.com/Download/FirmwareImages.aspx).
+You will also need a [Fortigate image with a valid licence](https://support.fortinet.com/Download/FirmwareImages.aspx).
 
 
 ## Installation
